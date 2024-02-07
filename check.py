@@ -2,6 +2,9 @@ import re
 from config import Youtube_data_API
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import requests
+from bs4 import BeautifulSoup
+from newspaper import Article, ArticleException
 def staticCheck(url):
     pass
 
@@ -45,4 +48,26 @@ def age_restricted(url):
         return False
 
 def scrapable(url):
-    pass
+    # Send a GET request to the URL
+    response = requests.get(url)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code != 200:
+        print("False")
+        return None
+
+    article = Article(url)
+
+    article.download()
+    try:
+        article.parse()
+    except ArticleException as e:
+        print("False")
+        return False
+
+    # Access the article content
+    article_text = article.text
+    if len(article_text)==0:
+        print("False")
+        return False
+    return True

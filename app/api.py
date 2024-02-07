@@ -7,7 +7,7 @@ def check_url():
     data = request.get_json()
     url = data.get('url')
     if not url:
-        pass
+        return jsonify({'error': 'URL is required'}), 400
     if staticCheck(url):
         result = jsonify({"Result": True})
     elif youtube(url):
