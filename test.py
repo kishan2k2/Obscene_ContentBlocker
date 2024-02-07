@@ -1,24 +1,11 @@
-import re
-from config import Youtube_data_API
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-def staticCheck(url):
-    pass
+import re
 
-def youtube(url):
-    youtube_patterns = [
-        r'^https?://(www\.)?youtube\.com/watch\?v=',
-        r'^https?://youtu\.be/'
-    ]
-    for pattern in youtube_patterns:
-        if re.match(pattern, url):
-            return True
-        else:
-            False
 
-def age_restricted(url):
-    youtube = build('youtube', 'v3', developerKey=Youtube_data_API)
-    video_id_match = re.search(r'(?:youtu\.be/|youtube\.com/embed/|youtube\.com/v/|youtube\.com/watch\?v=|youtube\.com/\S*?[?&]v=|youtube\.com/\S*?embed/\S*?|youtube\.com/\S*?v=)([^"&?/ ]{11})', url)
+def is_age_restricted_video(api_key, URL):
+    youtube = build('youtube', 'v3', developerKey=api_key)
+    video_id_match = re.search(r'(?:youtu\.be/|youtube\.com/embed/|youtube\.com/v/|youtube\.com/watch\?v=|youtube\.com/\S*?[?&]v=|youtube\.com/\S*?embed/\S*?|youtube\.com/\S*?v=)([^"&?/ ]{11})', URL)
     
     if video_id_match:
         video_id = video_id_match.group(1)
@@ -43,6 +30,4 @@ def age_restricted(url):
     except HttpError as e:
         print(f'Error retrieving video details: {e}')
         return False
-
-def scrapable(url):
-    pass
+print(is_age_restricted_video("AIzaSyCkJnK85KSuBazYbH-N6s2Ja5DnIf-vs5Q", "https://www.youtube.com/watch?v=fYH8eSiOf5I&pp=ygUUYWdlIHJlc3RyaWN0ZWQgdmlkZW8%3D"))
