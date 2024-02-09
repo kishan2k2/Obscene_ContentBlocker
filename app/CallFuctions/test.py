@@ -30,7 +30,7 @@
 #     except HttpError as e:
 #         print(f'Error retrieving video details: {e}')
 #         return False
-# print(is_age_restricted_video("AIzaSyCkJnK85KSuBazYbH-N6s2Ja5DnIf-vs5Q", "https://www.youtube.com/watch?v=fYH8eSiOf5I&pp=ygUUYWdlIHJlc3RyaWN0ZWQgdmlkZW8%3D"))
+# print(is_age_restricted_video("", "https://www.youtube.com/watch?v=&pp=ygUUYWdlIHJlc3RyaWN0ZWQgdmlkZW8%3D"))
 
 # import requests
 # from bs4 import BeautifulSoup
@@ -68,4 +68,54 @@
 # if article_content:
 #     print(article_content)
 
+# from newspaper import Article, ArticleException
+# def scrape_article(url):
+#     article = Article(url)
 
+#     article.download()
+#     try:
+#         article.parse()
+#     except ArticleException as e:
+#         print("False")
+#         return False
+
+#     # Access the article content
+#     article_text = article.text
+#     return article_text
+# data = scrape_article("https://www.news18.com/world/rebuild-injured-pakistan-nawaz-sharif-claims-victory-in-polls-invites-all-parties-to-form-coalition-govt-8773185.html")
+# print(data)
+
+# from youtube_transcript_api import YouTubeTranscriptApi
+# if not YouTubeTranscriptApi.get_transcript('F3c0AcfPwd'):
+#     print("NA")
+
+# import googleapiclient.discovery
+# from googleapiclient.errors import HttpError
+
+# def has_captions(api_key, video_id):
+#     youtube = googleapiclient.discovery.build('youtube', 'v3', developerKey=api_key)
+
+#     try:
+#         captions_response = youtube.captions().list(
+#             part='snippet',
+#             videoId=video_id
+#         ).execute()
+
+#         captions = captions_response.get('items', [])
+#         print(captions)
+#         return len(captions) > 0
+
+#     except HttpError as e:
+#         print(f'Error checking captions: {e}')
+#         return False
+
+# # Example usage
+# api_key = ''
+# video_id = 'OZRYzH0Q0pU'
+
+# result = has_captions(api_key, video_id)
+
+# if result:
+#     print("The video has captions.")
+# else:
+    # print("The video does not have captions.")
