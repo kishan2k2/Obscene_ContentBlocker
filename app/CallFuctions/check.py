@@ -1,5 +1,6 @@
 import re
-from app.CallFuctions.config import Youtube_data_API
+import json
+from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import requests
@@ -96,3 +97,34 @@ def caption_check(url):
     except HttpError as e:
         print(f'Error checking captions: {e}')
         return False
+    
+def Safe_browsing(url):
+    safe_browsing_url = f'https://safebrowsing.googleapis.com/v4/threatMatches:find?key={SafeBrowsing_API_KEY}'
+    print('hi')
+    payload = {
+        'client': {
+            'clientId': 'your-application-name',
+            'clientVersion': '1.0.0',
+        },
+        'threatInfo': {
+            'threatTypes': ['MALWARE', 'SOCIAL_ENGINEERING', 'UNWANTED_SOFTWARE', 'THREAT_TYPE_UNSPECIFIED'],
+            'platformTypes': ['ANY_PLATFORM'],
+            'threatEntryTypes': ['URL'],
+            'threatEntries': [{'url': url}],
+        },
+    }
+    print('hi')
+    headers = {'Content-Type': 'application/json'}
+
+    response = requests.post(safe_browsing_url, data=json.dumps(payload), headers=headers)
+
+    if response.status_code == 200:
+        threat_matches = response.json().get('matches', [])
+        if threat_matches:
+            return False
+        else:
+
+            return True
+    else:
+        # User ko benifit of the doubt dene ke liye
+        return True

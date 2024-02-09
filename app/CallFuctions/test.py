@@ -119,3 +119,47 @@
 #     print("The video has captions.")
 # else:
     # print("The video does not have captions.")
+
+# import requests
+# import json
+
+# from config import SafeBrowsing_API_KEY
+# api_key = SafeBrowsing_API_KEY
+
+# def check_url_safe_browsing(api_key, url):
+#     safe_browsing_url = f'https://safebrowsing.googleapis.com/v4/threatMatches:find?key={api_key}'
+#     print('hi')
+#     payload = {
+#         'client': {
+#             'clientId': 'your-application-name',
+#             'clientVersion': '1.0.0',
+#         },
+#         'threatInfo': {
+#             'threatTypes': ['MALWARE', 'SOCIAL_ENGINEERING', 'UNWANTED_SOFTWARE', 'THREAT_TYPE_UNSPECIFIED'],
+#             'platformTypes': ['ANY_PLATFORM'],
+#             'threatEntryTypes': ['URL'],
+#             'threatEntries': [{'url': url}],
+#         },
+#     }
+#     print('hi')
+#     headers = {'Content-Type': 'application/json'}
+
+#     response = requests.post(safe_browsing_url, data=json.dumps(payload), headers=headers)
+
+#     if response.status_code == 200:
+#         threat_matches = response.json().get('matches', [])
+#         if threat_matches:
+#             return False
+#         else:
+
+#             return True
+#     else:
+#         # User ko benifit of the doubt dene ke liye
+#         return True
+
+# Example usage
+# api_key = 'YOUR_API_KEY'
+# url_to_check = ''
+
+# check_url_safe_browsing(api_key, url_to_check)
+
