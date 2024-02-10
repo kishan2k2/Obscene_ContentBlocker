@@ -25,11 +25,11 @@ def check_url():
             data = data_preprocessing(data) # Confirm the format of the input data for preprocessing.
             return ask_gemini(data)
         else:
-            return jsonify({"Result":True})
+            return jsonify({"Result":False})
     elif scrapable(url):
         data = article_scrape(url)
         data = data_preprocessing(data) # Confirm the format of the input data for preprocessing.
         return ask_gemini(data)
     else:
-        result = jsonify({"Result": True})
+        result = jsonify({"Result": False})
     return result

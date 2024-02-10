@@ -1,2 +1,2 @@
-def ask_gemini(url):
-    pass
+def ask_gemini(data):
+    return data

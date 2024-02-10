@@ -1,15 +1,17 @@
 import re
 import json
-from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY
+from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY, block_words
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import requests
-from bs4 import BeautifulSoup
 from newspaper import Article, ArticleException
 import warnings
 warnings.filterwarnings("ignore")
 def staticCheck(url):
-    pass
+    if any(re.search(keyword, url, re.IGNORECASE) for keyword in block_words):
+        return True
+    else:
+        return False
 def youtube(url):
     youtube_patterns = [
         r'^https?://(www\.)?youtube\.com/watch\?v=',
@@ -56,7 +58,7 @@ def scrapable(url):
     # Check if the request was successful (status code 200)
     if response.status_code != 200:
         print("False")
-        return None
+        return False
 
     article = Article(url)
 

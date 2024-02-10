@@ -165,23 +165,149 @@
 
 
 
+# import re
+
+# def is_explicit_content(url):
+#     # Define explicit content keywords
+#     explicit_keywords = ['adult', 'explicit', 'porn', 'xxx']
+
+#     # Check if any keyword is present in the URL
+#     if any(re.search(keyword, url, re.IGNORECASE) for keyword in explicit_keywords):
+#         return True
+#     else:
+#         return False
+
+# # Example usage
+# url_to_check = 'https://example.com/adult-content'
+# result = is_explicit_content(url_to_check)
+
+# if result:
+#     print("The URL contains explicit content.")
+# else:
+#     print("The URL is safe.")
+
+data = "Hello thi's is ` ' "" is kish3hand"
+import nltk
+from nltk.stem.porter import PorterStemmer
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+import string
 import re
+translator = str.maketrans('', '', string.punctuation)
+stemmer = PorterStemmer()
+stop_words = set(stopwords.words("english"))
+def data_preprocessing(data):
+    data = data.lower();
+    data = re.sub(r'\d+', '', data)
+    data = data.translate(translator)
+    data = " ".join(data.split())
+    data = word_tokenize(data)
+    stem = [stemmer.stem(word) for word in data]
+    data = [word for word in stem if word not in stop_words]
+    return data #The return type is list of words. And not  a sentence, I have not changed it for a purpose.
+print(data_preprocessing(data))
 
-def is_explicit_content(url):
-    # Define explicit content keywords
-    explicit_keywords = ['adult', 'explicit', 'porn', 'xxx']
+# import csv 
+# import re 
+# def load_keywords(file_path):
+#     keyword = [] 
+#     with open(file_path, 'r') as csvfile:
+#         reader = csv.reader(csvfile)
+#         for row in reader:
+#             row = row
+#             keyword.extend(row)
+#     return keyword
+# print(load_keywords('assests/English.csv'))
 
-    # Check if any keyword is present in the URL
-    if any(re.search(keyword, url, re.IGNORECASE) for keyword in explicit_keywords):
-        return True
-    else:
-        return False
 
-# Example usage
-url_to_check = 'https://example.com/adult-content'
-result = is_explicit_content(url_to_check)
+# data = '''4tube
+# 8teenxxx
+# alotporn
+# amateurscentral
+# asianscentral
+# beeg
+# bustnow
+# cliphunter
+# definebabes
+# deviantclip
+# drtuber
+# empflix
+# fantasti.cc
+# fapdu
+# freeporn
+# freudbox
+# fuq
+# fux
+# grayvee
+# hellxx
+# hustlertube
+# jugy
+# jizzhut
+# kaktuz
+# keezmovies
+# kinxxx
+# laraporn
+# leakedporn
+# lovelyclips
+# lubetube
+# mofosex
+# monstertube
+# madthumbs
+# moviefap
+# moviesand
+# orgasm
+# perfectgirls.net
+# pichunter
+# planetsuzy
+# porn
+# pornolandia
+# porn-plus
+# porncor
+# pornhub
+# pornrabbit
+# porntitan
+# pussy.org
+# redtube
+# tube8
+# xhamster
+# xnxx 
+# xvideos
+# youjizz
+# '''
+# from nltk.tokenize import word_tokenize
+# print(word_tokenize(data))
+# import re
+# from config import block_words
+# def nsfw(url):
+#     if any(re.search(keyword, url, re.IGNORECASE) for keyword in block_words):
+#         return True
+#     else:
+#         return False
+# print(nsfw('google.com'))
+# import requests
+# from newspaper import Article, ArticleException
+# def scrapable(url):
+#     # Send a GET request to the URL
+#     response = requests.get(url)
 
-if result:
-    print("The URL contains explicit content.")
-else:
-    print("The URL is safe.")
+#     # Check if the request was successful (status code 200)
+#     if response.status_code != 200:
+
+#         return False
+
+#     article = Article(url)
+
+#     article.download()
+#     try:
+#         article.parse()
+#     except ArticleException as e:
+#         return False
+
+#     # Access the article content
+#     article_text = article.text
+#     if len(article_text)==0:
+#         print("False")
+#         return False
+#     return True
+
+# print(scrapable('https://www.notion.so/static-check-7d22d41bd658421688a6b589a8f18750'))
