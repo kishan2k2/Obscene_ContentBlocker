@@ -163,3 +163,25 @@
 
 # check_url_safe_browsing(api_key, url_to_check)
 
+
+
+import re
+
+def is_explicit_content(url):
+    # Define explicit content keywords
+    explicit_keywords = ['adult', 'explicit', 'porn', 'xxx']
+
+    # Check if any keyword is present in the URL
+    if any(re.search(keyword, url, re.IGNORECASE) for keyword in explicit_keywords):
+        return True
+    else:
+        return False
+
+# Example usage
+url_to_check = 'https://example.com/adult-content'
+result = is_explicit_content(url_to_check)
+
+if result:
+    print("The URL contains explicit content.")
+else:
+    print("The URL is safe.")

@@ -100,7 +100,6 @@ def caption_check(url):
     
 def Safe_browsing(url):
     safe_browsing_url = f'https://safebrowsing.googleapis.com/v4/threatMatches:find?key={SafeBrowsing_API_KEY}'
-    print('hi')
     payload = {
         'client': {
             'clientId': 'your-application-name',
@@ -113,7 +112,6 @@ def Safe_browsing(url):
             'threatEntries': [{'url': url}],
         },
     }
-    print('hi')
     headers = {'Content-Type': 'application/json'}
 
     response = requests.post(safe_browsing_url, data=json.dumps(payload), headers=headers)

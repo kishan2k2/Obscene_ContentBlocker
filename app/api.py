@@ -33,4 +33,3 @@ def check_url():
     else:
         result = jsonify({"Result": True})
     return result
-# app\CallFuctions\check.py
