@@ -1,1 +1,1 @@
-False
+word_tokenize

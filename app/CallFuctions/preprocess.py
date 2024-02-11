@@ -15,6 +15,6 @@ def data_preprocessing(data):
     data = word_tokenize(data)
     stem = [stemmer.stem(word) for word in data]
     data = [word for word in stem if word not in stop_words]
-    # return data #The return type is list of words. And not  a sentence, I have not changed it for a purpose.
+    return data #The return type is list of words. And not  a sentence, I have not changed it for a purpose.
     ans = " ".join(data)
     return ans

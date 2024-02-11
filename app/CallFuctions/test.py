@@ -185,27 +185,52 @@
 #     print("The URL contains explicit content.")
 # else:
 #     print("The URL is safe.")
+# import nltk
+# from nltk.stem.porter import PorterStemmer
+# from nltk.tokenize import word_tokenize
+# from nltk.corpus import stopwords
+# import string
+# import re
 
-data = "Hello thi's is ` ' "" is kish3hand"
-import nltk
-from nltk.stem.porter import PorterStemmer
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-import string
-import re
-translator = str.maketrans('', '', string.punctuation)
-stemmer = PorterStemmer()
-stop_words = set(stopwords.words("english"))
-def data_preprocessing(data):
-    data = data.lower();
-    data = re.sub(r'\d+', '', data)
-    data = data.translate(translator)
-    data = " ".join(data.split())
-    data = word_tokenize(data)
-    stem = [stemmer.stem(word) for word in data]
-    data = [word for word in stem if word not in stop_words]
-    return data #The return type is list of words. And not  a sentence, I have not changed it for a purpose.
-print(data_preprocessing(data))
+# translator = str.maketrans('', '', string.punctuation)
+# stemmer = PorterStemmer()
+# stop_words = set(stopwords.words("english"))
+
+# def read_data_from_file(file_path):
+#     with open(file_path, 'r') as file:
+#         data = file.readlines()
+#     return data
+
+# def write_data_to_file(file_path, data):
+#     with open(file_path, 'w') as file:
+#         for line in data:
+#             file.write(line)
+
+# def data_preprocessing(data):
+#     preprocessed_data = []
+#     for line in data:
+#         line = line.lower()
+#         line = re.sub(r'\d+', '', line)
+#         line = line.translate(translator)
+#         line = " ".join(line.split())
+#         line = word_tokenize(line)
+#         stem = [stemmer.stem(word) for word in line]
+#         line = [word for word in stem if word not in stop_words]
+#         preprocessed_data.append(" ".join(line))  # Append the preprocessed line to the list
+#     return preprocessed_data
+
+# # Example usage
+# file_path = 'assests/full-list-of-bad-words_comma-separated-text-file_2022_05_05/full-list-of-bad-words_comma-separated-text-file_2022_05_05.txt'
+# data = read_data_from_file(file_path)
+# preprocessed_data = data_preprocessing(data)
+
+# # Write preprocessed data back to the same file
+# write_data_to_file(file_path, preprocessed_data)
+
+# print("Data preprocessing and writing to file completed.")
+
+
+# data = word_tokenize(data)
 
 # import csv 
 # import re 
@@ -311,3 +336,6 @@ print(data_preprocessing(data))
 #     return True
 
 # print(scrapable('https://www.notion.so/static-check-7d22d41bd658421688a6b589a8f18750'))
+
+# from config import check_word
+# print(check_word)
