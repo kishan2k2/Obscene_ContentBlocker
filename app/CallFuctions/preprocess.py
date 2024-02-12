@@ -1,6 +1,7 @@
 import nltk
 from nltk.stem.porter import PorterStemmer
 from nltk.tokenize import word_tokenize
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 import string
 import re
