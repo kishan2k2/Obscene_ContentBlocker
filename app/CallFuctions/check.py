@@ -11,6 +11,7 @@ warnings.filterwarnings("ignore")
 Youtube_data_API = os.environ.get("Youtube_data_API")
 SafeBrowsing_API_KEY = os.environ.get("SafeBrowsing_API_KEY")
 block_words = os.environ.get("block_words")
+
 def staticCheck(url):
     if any(re.search(keyword, url, re.IGNORECASE) for keyword in block_words):
         return True
@@ -130,9 +131,9 @@ def Safe_browsing(url):
             return True
     else:
         return True
-    
-def staticCheck2(data):
-    for word in data:
-        if word in check_word:
-            print(word)
-            return True
+# set the check words in env variable if I find a relavent dataset.
+# def staticCheck2(data):
+#     for word in data:
+#         if word in check_word:
+#             print(word)
+#             return True

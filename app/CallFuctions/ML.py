@@ -20,7 +20,7 @@ def huggingface(data):
             negitive += 1
         else:
             neutral += 1
-        print(sentence)
+        print(sentence)#Remove this statement after checking for a bit.
     ratio = (negitive/(neutral+positive))*100
     if ratio >= 5:
         result = True
