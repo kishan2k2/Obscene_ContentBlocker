@@ -24,5 +24,5 @@ def huggingface(data):
     return {
         'true':negitive,
         'false':neutral+positive,
-        'ratio': negitive/(neutral+positive)
+        'ratio': str((negitive/(neutral+positive))*100) + "%"
     }

@@ -16,25 +16,26 @@ def check_url():
     elif not Safe_browsing(url):
         result = jsonify({"Result": True})
     elif staticCheck(url):
-        result = jsonify({"Result": True}) # See if I can use the safe browser API
+        result = jsonify({"Result": True}) 
     elif youtube(url):
         if age_restricted(url):
             result = jsonify({"Result": True})
         elif caption_check(url):
             data = youtube_caption(url)
-            data = data_preprocessing(data) # Confirm the format of the input data for preprocessing.
-            # if staticCheck2(data):
-            #     return jsonify({"Result": True})
-            return huggingface(data)
+            data = data_preprocessing(data) 
+            if staticCheck2(data):
+                return jsonify({"Result": True})
+            return jsonify({"Result": False})
+            # return huggingface(data)
         else:
             return jsonify({"Result":False})
     elif scrapable(url):
         data = article_scrape(url)
-        data = data_preprocessing(data) # Confirm the format of the input data for preprocessing.
-        # if staticCheck2(data):
-        #     return jsonify({"Result": True})
-        # return data
-        return huggingface(data)
+        data = data_preprocessing(data) 
+        if staticCheck2(data):
+            return jsonify({"Result": True})
+        return jsonify({"Result": False})
+        # return huggingface(data)
     else:
         result = jsonify({"Result": False})
     return result

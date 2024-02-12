@@ -84,7 +84,6 @@ def caption_check(url):
     else:
         print("Invalid YouTube URL")
         return False
-    # youtube = googleapiclient.discovery.build('youtube', 'v3', developerKey=Youtube_data_API)
     youtube = build('youtube', 'v3', developerKey=Youtube_data_API)
     try:
         captions_response = youtube.captions().list(
@@ -126,7 +125,6 @@ def Safe_browsing(url):
 
             return True
     else:
-        # User ko benifit of the doubt dene ke liye
         return True
     
 def staticCheck2(data):
