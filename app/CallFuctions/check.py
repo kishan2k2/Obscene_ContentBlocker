@@ -1,12 +1,16 @@
 import re
+import os
 import json
-from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY, block_words, check_word
+# from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY, block_words, check_word
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import requests
 from newspaper import Article, ArticleException
 import warnings
 warnings.filterwarnings("ignore")
+Youtube_data_API = os.environ.get("Youtube_data_API")
+SafeBrowsing_API_KEY = os.environ.get("SafeBrowsing_API_KEY")
+block_words = os.environ.get("block_words")
 def staticCheck(url):
     if any(re.search(keyword, url, re.IGNORECASE) for keyword in block_words):
         return True
