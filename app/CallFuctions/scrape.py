@@ -15,6 +15,7 @@ def youtube_caption(url):
         text += data[i]['text'] + " "
     return text
 def article_scrape(url):
+    
     article = Article(url)
 
     article.download()

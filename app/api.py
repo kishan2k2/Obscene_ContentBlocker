@@ -8,8 +8,12 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import warnings
+from flask_cors import  CORS, cross_origin
 warnings.filterwarnings("ignore")
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADER'] = 'Content-Type'
+
 
 @app.route('/send-email', methods=['POST'])
 def send_email():
