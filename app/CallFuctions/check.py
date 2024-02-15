@@ -1,7 +1,7 @@
 import re
 import os
 import json
-from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY, block_words, check_word
+from app.CallFuctions.config import Youtube_data_API, SafeBrowsing_API_KEY, block_words
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import requests
@@ -134,8 +134,8 @@ def Safe_browsing(url):
     else:
         return True
     
-def staticCheck2(data):
-    for word in data:
-        if word in check_word:
-            print(word)
-            return True
+# def staticCheck2(data):
+#     for word in data:
+#         if word in check_word:
+#             print(word)
+#             return True
