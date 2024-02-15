@@ -17,6 +17,7 @@ app.config['CORS_HEADER'] = 'Content-Type'
 
 @app.route('/send-email', methods=['POST'])
 def send_email():
+    print("send email has been invoked")
     data = request.get_json()
     id = data.get('id')
     url = data.get('url')
@@ -32,8 +33,8 @@ def send_email():
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         server.login(sender_email, password)
         server.sendmail(sender_email, reciever_mail, message.as_string())
-        return jsonify({"Result": True})
-    return jsonify({"Result": False})
+        return jsonify({"result": True})
+    return jsonify({"result": False})
 
 
 @app.route('/check-url', methods=['POST'])
@@ -43,28 +44,28 @@ def check_url():
     if not url:
         return jsonify({"error": "URL is required"}), 400
     elif not Safe_browsing(url):
-        result = jsonify({"Result": True})
+        result = jsonify({"result": True})
     elif staticCheck(url):
-        result = jsonify({"Result": True}) 
+        result = jsonify({"result": True}) 
     elif youtube(url):
         if age_restricted(url):
-            result = jsonify({"Result": True})
+            result = jsonify({"result": True})
         elif caption_check(url):
             data = youtube_caption(url)
             data = data_preprocessing(data) 
             # if staticCheck2(data):
-            #     return jsonify({"Result": True})
-            # return jsonify({"Result": False})
+            #     return jsonify({"result": True})
+            # return jsonify({"result": False})
             return huggingface(data)
         else:
-            return jsonify({"Result":False})
+            return jsonify({"result":False})
     elif scrapable(url):
         data = article_scrape(url)
         data = data_preprocessing(data) 
         # if staticCheck2(data):
-        #     return jsonify({"Result": True})
-        # return jsonify({"Result": False})
+        #     return jsonify({"result": True})
+        # return jsonify({"result": False})
         return huggingface(data)
     else:
-        result = jsonify({"Result": False})
+        result = jsonify({"result": False})
     return result
