@@ -11,6 +11,7 @@ A small project for reckon Hackathon
     1. Using the URL of the website.
         1. Check if has already been blacklisted.
         2. Monitoring and analyzing the content of the website using machine learning and data science. 
+2. **Our solution is tried and tested and gives astonishing 93.88 accuracy**
 
 # Process Flow chart
 
