@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Box</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('blur_image.jpg'); 
+            background-size: cover;
+            opacity: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hidden
+        {
+            display: none;
+        }
+        #dialogBoxInject {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 100;
+        }
+
+        #dialogBoxInject h2 {
+            margin-top: 0;
+        }
+
+        #dialogBoxInject button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h1  id="loading" class="hidden">Loading...</h1>
+    <div id="dialogBoxInject">
+        <h2>Dialog Box</h2>
+        <a href="https://www.google.com"><button id="backButtonInject">Back</button></a>
+        <a href=""></a><button id="proceedButtonInject">Proceed</button></a>
+    </div>
+
+    
+    <script src="alert.js">
+        
+    </script>
+   
+</body>
+</html>

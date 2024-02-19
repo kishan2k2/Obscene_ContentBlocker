@@ -1,0 +1,168 @@
+body
+{
+    
+    height: 400px;
+    width: 350px;
+    background-color: rgb(240,241,243);
+}
+.hidden
+{
+    display: none;
+}
+
+
+/* sign up forms*/
+#individualDiv
+{
+    padding-top: 15px;
+    height: 100%;
+}
+#organizationDiv
+{
+    padding-top: 15px;
+    height: 100%;
+}
+.parentContainer
+{
+    margin: auto;
+    width: 90%;
+    height: 95%;
+}
+.childContainer
+{   
+    margin: auto;
+    width: 90%;
+    height: 95%;
+    background-color: white;
+    border-radius: 7px;
+    color: gray;
+   
+    
+    
+}
+form
+{  
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+   padding: 15px;
+    
+}
+h3{
+    text-align: center;
+}
+.categoryDiv
+{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    
+}
+
+.categoryDiv >p
+{
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20%;
+}
+
+.userNameDiv
+{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.deviceIdDiv
+{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+.userEmailDiv
+{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+#organizationDiv .childContainer .userEmailDiv 
+{
+    gap: 10px;
+}
+.userPasswordDiv
+{   
+    margin: 6px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input
+{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+button
+{
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    padding:6px;
+    background-color: #ed5684;
+    color: white;
+    transition: 0.5s ease;    
+}
+
+button:hover
+{
+    box-shadow: .2rem .2rem .5rem .2rem rgb(4, 150, 142);
+}
+
+hr{
+    width: 80%;
+    color: grey;
+    position: relative;
+
+}
+#or
+{
+
+    border: 1px solid gray;
+    display: inline;
+    padding: 2px;
+    border-radius: 4px;
+    position: relative;
+    left: 150px;
+    bottom: 15px;
+    background-color: white;
+}
+svg{
+    width: 12px;
+    height: 12px;
+    padding: 5px;
+    border:1px solid black;
+    border-radius: 50%;
+    
+}
+.googleSignUp
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loginDiv
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
